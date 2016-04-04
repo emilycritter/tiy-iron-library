@@ -9,17 +9,13 @@ class AddBookTest < Capybara::Rails::TestCase
 
   scenario "Add Book", js: true do
     visit root_path
-    within "header" do
-      first(:link, "add").click
-    end
+    visit new_book_path
 
     fill_in "Email", with: "bob@example.com"
     fill_in "Password", with: "12345678"
     click_button "Sign In"
 
-    within "header" do
-      first(:link, "add").click
-    end
+    visit new_book_path
 
     within("#new_book") do
       fill_in "Title", with: "I'm a New Book"
